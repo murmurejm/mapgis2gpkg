@@ -69,6 +69,6 @@ mapgis2gpkg/
 
 - 坐标系：默认转换为**WGS84 （EPSG4326）**，其它坐标系转换可以使用**QGIS**处理；
 
-- 桌面gpkg引擎使用fiona，web gpkg引擎使用sqlite3。
+- 桌面gpkg引擎使用fiona，web gpkg引擎使用sqlite3；
 
-- 属性表未转换中文字段名称，
+- 属性表未转换中文字段名称。
