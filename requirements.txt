@@ -1,0 +1,7 @@
+geopandas>=0.14
+shapely>=2.0
+pyproj>=3.6
+pandas>=2.0
+numpy>=1.24
+fiona>=1.9.6
+PySide6>=6.6

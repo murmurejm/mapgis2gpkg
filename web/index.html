@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mapgis2gpkg</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo">M</span>
+        <div>
+          <h1>mapgis2gpkg</h1>
+          <p>浏览器本地处理 · 数据不上传</p>
+        </div>
+      </div>
+      <div class="env">
+        <span class="dot" id="env-dot"></span>
+        <span id="env-text">正在初始化运行环境…</span>
+      </div>
+    </header>
+
+    <main>
+      <div class="drop" id="drop">
+        <div class="drop-icon">＋</div>
+        <div class="drop-main">拖入 .wt / .wl / .wp 文件或整个文件夹</div>
+        <div class="drop-sub">
+          或
+          <label class="link">选择文件
+            <input type="file" id="file-input" multiple accept=".wt,.wl,.wp" hidden>
+          </label>
+          <label class="link">选择文件夹
+            <input type="file" id="dir-input" webkitdirectory hidden>
+          </label>
+        </div>
+      </div>
+
+      <section class="card hidden" id="file-card">
+        <div class="card-head">
+          <span>已选文件</span>
+          <span class="muted" id="file-count">0 个</span>
+          <button class="ghost" id="clear-files">清空</button>
+        </div>
+        <ul class="file-list" id="file-list"></ul>
+      </section>
+
+      <section class="card">
+        <div class="settings">
+          <div class="field">
+            <label>输出格式</label>
+            <div class="segmented" id="format">
+              <button data-v="gpkg" class="active">  .gpkg  </button>
+              <button data-v="shp">  .shp  </button>
+            </div>
+          </div>
+          <div class="field">
+            <label>目标坐标系</label>
+            <select id="crs">
+              <option value="EPSG:4326" selected>WGS 84</option>
+              <option value="EPSG:4490">CGCS2000</option>
+              <option value="keep">保持北京54</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="convert" id="convert" disabled>
+          <span id="convert-label">开始转换</span>
+          <span class="convert-bar" id="convert-bar"></span>
+        </button>
+
+        <div class="status" id="status">等待文件…</div>
+      </section>
+
+      <section class="card hidden" id="result-card">
+        <div class="card-head">
+          <span>转换结果</span>
+          <span class="muted" id="result-summary"></span>
+        </div>
+        <table class="result-table">
+          <thead>
+            <tr>
+              <th>文件</th><th>图层</th><th>状态</th><th>要素</th><th>耗时</th>
+            </tr>
+          </thead>
+          <tbody id="result-body"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer class="footer">
+      所有计算都在浏览器中完成，文件不会上传到任何服务器。
+    </footer>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
